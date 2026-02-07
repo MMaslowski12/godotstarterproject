@@ -1,0 +1,5 @@
+# This directory is a Syncthing folder marker.
+# Do not delete.
+
+folderID: tbdmq-w4dny
+created: 2025-11-01T23:26:55-07:00

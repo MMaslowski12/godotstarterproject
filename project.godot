@@ -1,0 +1,91 @@
+; Engine configuration file.
+; It's best edited using the editor UI and not directly,
+; since the parameters that go here are not all obvious.
+;
+; Format:
+;   [section] ; section goes between []
+;   param=value ; assign values to parameters
+
+config_version=5
+
+[animation]
+
+compatibility/default_parent_skeleton_in_mesh_instance_3d=true
+
+[application]
+
+config/name="new project"
+run/main_scene="uid://c8ubagcyykfif"
+config/features=PackedStringArray("4.6", "Forward Plus")
+config/icon="res://icon.svg"
+
+[autoload]
+
+XRToolsUserSettings="*uid://tpu3a35e3b23"
+XRToolsRumbleManager="*uid://bi8r24kx4t38w"
+
+[debug_draw_3d]
+
+settings/addon_root_folder="res://addons/debug_draw_3d"
+
+[editor_plugins]
+
+enabled=PackedStringArray("res://addons/godot-xr-tools/plugin.cfg", "res://addons/nuke_uids/plugin.cfg")
+
+[shader_globals]
+
+META_ENVIRONMENT_DEPTH_AVAILABLE={
+"type": "bool",
+"value": false
+}
+META_ENVIRONMENT_DEPTH_TEXTURE={
+"type": "sampler2DArray",
+"value": ""
+}
+META_ENVIRONMENT_DEPTH_PROJECTION_VIEW_LEFT={
+"type": "mat4",
+"value": Projection(1, 0, 0, 0, 0, 1, 0, 0, 0, 0, 1, 0, 0, 0, 0, 1)
+}
+META_ENVIRONMENT_DEPTH_PROJECTION_VIEW_RIGHT={
+"type": "mat4",
+"value": Projection(1, 0, 0, 0, 0, 1, 0, 0, 0, 0, 1, 0, 0, 0, 0, 1)
+}
+META_ENVIRONMENT_DEPTH_INV_PROJECTION_VIEW_LEFT={
+"type": "mat4",
+"value": Projection(1, 0, 0, 0, 0, 1, 0, 0, 0, 0, 1, 0, 0, 0, 0, 1)
+}
+META_ENVIRONMENT_DEPTH_INV_PROJECTION_VIEW_RIGHT={
+"type": "mat4",
+"value": Projection(1, 0, 0, 0, 0, 1, 0, 0, 0, 0, 1, 0, 0, 0, 0, 1)
+}
+META_ENVIRONMENT_DEPTH_FROM_CAMERA_PROJECTION_LEFT={
+"type": "mat4",
+"value": Projection(1, 0, 0, 0, 0, 1, 0, 0, 0, 0, 1, 0, 0, 0, 0, 1)
+}
+META_ENVIRONMENT_DEPTH_FROM_CAMERA_PROJECTION_RIGHT={
+"type": "mat4",
+"value": Projection(1, 0, 0, 0, 0, 1, 0, 0, 0, 0, 1, 0, 0, 0, 0, 1)
+}
+META_ENVIRONMENT_DEPTH_TO_CAMERA_PROJECTION_LEFT={
+"type": "mat4",
+"value": Projection(1, 0, 0, 0, 0, 1, 0, 0, 0, 0, 1, 0, 0, 0, 0, 1)
+}
+META_ENVIRONMENT_DEPTH_TO_CAMERA_PROJECTION_RIGHT={
+"type": "mat4",
+"value": Projection(1, 0, 0, 0, 0, 1, 0, 0, 0, 0, 1, 0, 0, 0, 0, 1)
+}
+
+[xr]
+
+openxr/enabled=true
+openxr/default_action_map="uid://b162hbky6gd15"
+openxr/reference_space=2
+openxr/extensions/hand_tracking=true
+openxr/extensions/hand_tracking_unobstructed_data_source=true
+openxr/extensions/hand_interaction_profile=true
+shaders/enabled=true
+openxr/extensions/meta/passthrough=true
+openxr/extensions/meta/hand_tracking_aim=true
+openxr/extensions/meta/hand_tracking_mesh=true
+openxr/extensions/meta/hand_tracking_capsules=true
+openxr/extensions/meta/scene_api=true

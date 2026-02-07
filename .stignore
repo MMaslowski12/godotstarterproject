@@ -1,0 +1,17 @@
+// Godot caches (delete allowed)
+(?d)**/.godot/
+(?d)**/.import/
+(?d)**/.export/
+
+// Logs & junk
+*.log
+*.cfg~
+*.tmp
+*.bak
+
+// OS / Syncthing crap
+(?i).DS_Store
+(?i)Thumbs.db
+desktop.ini
+.syncthing.*
+*.syncthing.*

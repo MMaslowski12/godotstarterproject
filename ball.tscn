@@ -1,0 +1,19 @@
+[gd_scene format=3 uid="uid://dkiyl6tri4vlb"]
+
+[sub_resource type="PhysicsMaterial" id="PhysicsMaterial_cbx31"]
+bounce = 1.0
+
+[sub_resource type="SphereShape3D" id="SphereShape3D_cbx31"]
+
+[sub_resource type="SphereMesh" id="SphereMesh_x8fbi"]
+
+[node name="ball" type="RigidBody3D" unique_id=491824871]
+physics_material_override = SubResource("PhysicsMaterial_cbx31")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="." unique_id=658998845]
+transform = Transform3D(0.1, 0, 0, 0, 0.1, 0, 0, 0, 0.1, 0, 0, 0)
+shape = SubResource("SphereShape3D_cbx31")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="." unique_id=575670152]
+transform = Transform3D(0.1, 0, 0, 0, 0.1, 0, 0, 0, 0.1, 0, 0, 0)
+mesh = SubResource("SphereMesh_x8fbi")

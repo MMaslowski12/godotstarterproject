@@ -1,0 +1,67 @@
+[gd_scene format=3 uid="uid://c8ubagcyykfif"]
+
+[ext_resource type="PackedScene" uid="uid://clc5dre31iskm" path="res://addons/godot-xr-tools/xr/start_xr.tscn" id="1_ig7tw"]
+[ext_resource type="Script" uid="uid://dx1v3dnaxbrly" path="res://addons/godot-xr-tools/objects/pickable.gd" id="3_h2yge"]
+[ext_resource type="PackedScene" uid="uid://bekq560toxa7p" path="res://PlayeenFaagen.tscn" id="4_1bvp3"]
+
+[sub_resource type="PlaneMesh" id="PlaneMesh_0xm2m"]
+
+[sub_resource type="BoxMesh" id="BoxMesh_0xm2m"]
+size = Vector3(1, 1, 0.5)
+
+[sub_resource type="ConvexPolygonShape3D" id="ConvexPolygonShape3D_h2yge"]
+points = PackedVector3Array(0.5, 0.5, 0.25, 0.5, 0.5, -0.25, -0.5, 0.5, 0.25, 0.5, -0.5, 0.25, 0.5, -0.5, -0.25, -0.5, 0.5, -0.25, -0.5, -0.5, 0.25, -0.5, -0.5, -0.25)
+
+[sub_resource type="Environment" id="Environment_h2yge"]
+background_mode = 1
+background_color = Color(0, 0, 0, 0)
+
+[sub_resource type="BoxMesh" id="BoxMesh_1bvp3"]
+size = Vector3(0.1, 0.1, 0.1)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_h2yge"]
+size = Vector3(0.1, 0.1, 0.1)
+
+[node name="Node3D" type="Node3D" unique_id=918877263]
+
+[node name="DirectionalLight3D" type="DirectionalLight3D" parent="." unique_id=11776054]
+transform = Transform3D(-0.8660254, -0.43301278, 0.25, 0, 0.49999997, 0.86602545, -0.50000006, 0.75, -0.43301266, 0, 0, 0)
+shadow_enabled = true
+
+[node name="StartXR" parent="." unique_id=782821130 instance=ExtResource("1_ig7tw")]
+enable_passthrough = true
+
+[node name="PlayenFaagen" parent="." unique_id=1784949618 instance=ExtResource("4_1bvp3")]
+transform = Transform3D(-0.0013963417, 0, -0.99999905, 0, 1, 0, 0.99999905, 0, -0.0013963417, 0, 0, 0)
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="." unique_id=817066762]
+transform = Transform3D(10, 0, 0, 0, 10, 0, 0, 0, 10, 0, 0, 0)
+visible = false
+mesh = SubResource("PlaneMesh_0xm2m")
+
+[node name="StaticBody3D" type="StaticBody3D" parent="." unique_id=957811577]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.25, 0.101, 0.604)
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="StaticBody3D" unique_id=545410384]
+mesh = SubResource("BoxMesh_0xm2m")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="StaticBody3D" unique_id=380087078]
+shape = SubResource("ConvexPolygonShape3D_h2yge")
+
+[node name="WorldEnvironment" type="WorldEnvironment" parent="." unique_id=525537571]
+environment = SubResource("Environment_h2yge")
+
+[node name="XRToolsPickable" type="RigidBody3D" parent="." unique_id=254542281]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.030875, 0.5332645)
+script = ExtResource("3_h2yge")
+picked_up_layer = 65537
+metadata/_custom_type_script = "uid://dx1v3dnaxbrly"
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="XRToolsPickable" unique_id=1582324049]
+mesh = SubResource("BoxMesh_1bvp3")
+skeleton = NodePath("")
+
+[node name="CollisionShape3D2" type="CollisionShape3D" parent="XRToolsPickable" unique_id=703930872]
+shape = SubResource("BoxShape3D_h2yge")
+
+[node name="xdtest" type="Node3D" parent="." unique_id=1553473003]

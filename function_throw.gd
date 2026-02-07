@@ -48,17 +48,20 @@ func _process(delta: float) -> void:
 	_time_since += delta
 	
 	var pistol_value = _controller.get_float(projectile_action)
-	print("PISTOL VALUE: ", pistol_value)
+	#if pistol_value > 0:
+		#print("PISTOL VALUE: ", pistol_value)
+		
 	if (pistol_value > _projectile_threshold and _time_since > delay):
+		#print("THROW")
 		_spawn_ball()
-		print("Controller: ", _controller)
+		#print("Controller: ", _controller)
 		_time_since = 0
 
 	var debug_arrow = get_index_finger_ray()
-	if "origin" in debug_arrow.keys():
-		var origin : Vector3 = debug_arrow["origin"]
-		var dir : Vector3 = debug_arrow["dir"]
-		DebugDraw3D.draw_arrow(origin, origin+dir, Color(255,0,0))
+	#if "origin" in debug_arrow.keys():
+		#var origin : Vector3 = debug_arrow["origin"]
+		#var dir : Vector3 = debug_arrow["dir"]
+		#DebugDraw3D.draw_arrow(origin, origin+dir, Color(255,0,0))
 	#DebugDraw3D.draw_arrow(start, start + dir_z, Color(255, 0, 0))
 	#DebugDraw3D.draw_arrow(start, start + dir_x, Color(0, 255, 0))
 	#DebugDraw3D.draw_arrow(start, start + dir_y, Color(0, 0, 255))

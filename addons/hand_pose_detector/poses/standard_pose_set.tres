@@ -4,64 +4,6 @@
 [ext_resource type="Script" uid="uid://bv7y801ytg4v5" path="res://addons/hand_pose_detector/hand_pose_set.gd" id="2_nc32a"]
 [ext_resource type="Script" uid="uid://rtrdxxu3itsb" path="res://addons/hand_pose_detector/fitness_function.gd" id="2_slqdw"]
 
-[sub_resource type="Resource" id="Resource_7pxg4"]
-script = ExtResource("2_slqdw")
-from = 60.0
-to = 80.0
-
-[sub_resource type="Resource" id="Resource_1fcsh"]
-script = ExtResource("2_slqdw")
-from = 80.0
-to = 110.0
-
-[sub_resource type="Resource" id="Resource_xvjny"]
-script = ExtResource("2_slqdw")
-from = 80.0
-to = 110.0
-
-[sub_resource type="Resource" id="Resource_yjd2j"]
-script = ExtResource("2_slqdw")
-from = 80.0
-to = 110.0
-
-[sub_resource type="Resource" id="Resource_j5qa6"]
-script = ExtResource("2_slqdw")
-from = 30.0
-to = 45.0
-
-[sub_resource type="Resource" id="Resource_rmm3v"]
-script = ExtResource("2_slqdw")
-from = 40.0
-to = 60.0
-
-[sub_resource type="Resource" id="Resource_bmko8"]
-script = ExtResource("2_slqdw")
-from = 40.0
-to = 60.0
-
-[sub_resource type="Resource" id="Resource_crwu0"]
-script = ExtResource("2_slqdw")
-from = 40.0
-to = 60.0
-
-[sub_resource type="Resource" id="Resource_nb4va"]
-script = ExtResource("2_slqdw")
-from = 40.0
-to = 60.0
-
-[sub_resource type="Resource" id="Resource_slqdw"]
-script = ExtResource("1_u751n")
-pose_name = "Fist"
-flexion_thumb = SubResource("Resource_nb4va")
-flexion_index = SubResource("Resource_j5qa6")
-flexion_middle = SubResource("Resource_rmm3v")
-flexion_ring = SubResource("Resource_crwu0")
-flexion_pinky = SubResource("Resource_bmko8")
-curl_index = SubResource("Resource_7pxg4")
-curl_middle = SubResource("Resource_1fcsh")
-curl_ring = SubResource("Resource_yjd2j")
-curl_pinky = SubResource("Resource_xvjny")
-
 [sub_resource type="Resource" id="Resource_g56rf"]
 script = ExtResource("2_slqdw")
 from = 60.0
@@ -107,9 +49,9 @@ script = ExtResource("2_slqdw")
 from = 40.0
 to = 60.0
 
-[sub_resource type="Resource" id="Resource_450d5"]
+[sub_resource type="Resource" id="Resource_slqdw"]
 script = ExtResource("1_u751n")
-pose_name = "Point"
+pose_name = "Fist"
 flexion_thumb = SubResource("Resource_rg6j7")
 flexion_index = SubResource("Resource_oqcof")
 flexion_middle = SubResource("Resource_5rwo6")
@@ -119,6 +61,41 @@ curl_index = SubResource("Resource_g56rf")
 curl_middle = SubResource("Resource_a0fa6")
 curl_ring = SubResource("Resource_xt66x")
 curl_pinky = SubResource("Resource_6ahpo")
+
+[sub_resource type="Resource" id="Resource_fytqx"]
+script = ExtResource("2_slqdw")
+from = 45.0
+to = 25.0
+
+[sub_resource type="Resource" id="Resource_1ajdg"]
+script = ExtResource("2_slqdw")
+from = 80.0
+to = 110.0
+
+[sub_resource type="Resource" id="Resource_ngpot"]
+script = ExtResource("2_slqdw")
+from = 80.0
+to = 110.0
+
+[sub_resource type="Resource" id="Resource_coj1j"]
+script = ExtResource("2_slqdw")
+from = 80.0
+to = 110.0
+
+[sub_resource type="Resource" id="Resource_nxpfb"]
+script = ExtResource("2_slqdw")
+from = 40.0
+to = 20.0
+
+[sub_resource type="Resource" id="Resource_450d5"]
+script = ExtResource("1_u751n")
+pose_name = "Point"
+threshold = 0.3
+flexion_index = SubResource("Resource_nxpfb")
+curl_index = SubResource("Resource_fytqx")
+curl_middle = SubResource("Resource_1ajdg")
+curl_ring = SubResource("Resource_coj1j")
+curl_pinky = SubResource("Resource_ngpot")
 
 [resource]
 script = ExtResource("2_nc32a")

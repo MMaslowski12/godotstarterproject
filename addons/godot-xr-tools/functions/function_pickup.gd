@@ -167,18 +167,18 @@ func _process(delta):
 
 	# Handle our grip
 	var grip_value = _controller.get_float(pickup_axis_action)
-	print("grip press check ", grip_pressed, grip_value)
-	print("controller: ", _controller)
-	print("pickup_axis_action: ", pickup_axis_action)
-	if grip_value != 0:
-		print("GRIPPED")
+	#print("grip press check ", grip_pressed, grip_value)
+	#print("controller: ", _controller)
+	#print("pickup_axis_action: ", pickup_axis_action)
+	#if grip_value != 0:
+		#print("GRIPPED")
 	if (grip_pressed and grip_value < (_grip_threshold - 0.2)):
-		print("GRIP RELEASED")
+		#print("GRIP RELEASED")
 		grip_pressed = false
 		_on_grip_release()
 	elif (!grip_pressed and grip_value > (_grip_threshold + 0.2)):
 		grip_pressed = true
-		print("GRIP PRESSED")
+		#print("GRIP PRESSED")
 		_on_grip_pressed()
 
 	# Calculate average velocity

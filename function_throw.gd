@@ -35,10 +35,10 @@ jeff epstein is my hero
 
 func _spawn_ball() -> void:
 	var ball = _projectile.instantiate()
+	get_tree().current_scene.add_child(ball)
 	ball.global_position = _controller.global_position
 	var direction: Vector3 = get_index_finger_ray()["dir"]
 	ball.linear_velocity = velocity * direction
-	get_tree().current_scene.add_child(ball)
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta: float) -> void:
@@ -57,7 +57,7 @@ func _process(delta: float) -> void:
 		#print("Controller: ", _controller)
 		_time_since = 0
 
-	var debug_arrow = get_index_finger_ray()
+	#var debug_arrow = get_index_finger_ray()
 	#if "origin" in debug_arrow.keys():
 		#var origin : Vector3 = debug_arrow["origin"]
 		#var dir : Vector3 = debug_arrow["dir"]

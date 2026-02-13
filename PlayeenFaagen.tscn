@@ -10,6 +10,7 @@
 [ext_resource type="Resource" uid="uid://ckjd0xa2a240p" path="res://addons/hand_pose_detector/poses/standard_pose_set.tres" id="7_1lblj"]
 [ext_resource type="PackedScene" uid="uid://b4ysuy43poobf" path="res://addons/godot-xr-tools/functions/function_pickup.tscn" id="8_2828a"]
 [ext_resource type="Script" uid="uid://da8pdlf8gwhco" path="res://function_throw.gd" id="9_1lblj"]
+[ext_resource type="PackedScene" uid="uid://1qu8cv13qgja" path="res://detected scene.tscn" id="11_4fqws"]
 
 [sub_resource type="Resource" id="Resource_1lblj"]
 script = ExtResource("3_wa01v")
@@ -37,6 +38,9 @@ metadata/_custom_type_script = "uid://d3oyo3h4jgcbv"
 [node name="PlayenFaagen" type="XROrigin3D" unique_id=1975143612]
 
 [node name="XRCamera3D2" type="XRCamera3D" parent="." unique_id=1592351889]
+
+[node name="OpenXRFbSceneManager" type="OpenXRFbSceneManager" parent="." unique_id=1307307837]
+default_scene = ExtResource("11_4fqws")
 
 [node name="LeftHand" type="XRNode3D" parent="." unique_id=1087878915]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.253, 0.95, 0)
@@ -105,10 +109,6 @@ ranged_angle = 5.914
 transform = Transform3D(0.1, 0, 0, 0, 0.1, 0, 0, 0, 0.1, 0, 0, 0)
 visible = false
 mesh = SubResource("BoxMesh_1lblj")
-
-[node name="Node" type="Node" parent="." unique_id=558038038]
-
-[node name="OpenXRFbSceneManager" type="OpenXRFbSceneManager" parent="." unique_id=1307307837]
 
 [node name="RightVControllerAim" type="XRController3D" parent="." unique_id=874986773]
 tracker = &"/user/hand_pose_controller/right"

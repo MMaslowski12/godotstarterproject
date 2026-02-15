@@ -3,6 +3,7 @@
 [ext_resource type="PackedScene" uid="uid://3gjkc6qju2n3" path="res://LeftHandHumanoid.gltf" id="1_hnqrl"]
 [ext_resource type="PackedScene" uid="uid://bymg1qpy1tu2w" path="res://RightHandHumanoid.gltf" id="2_0bi20"]
 [ext_resource type="PackedScene" uid="uid://bh8isvqs258cp" path="res://addons/hand_pose_detector/hand_pose_controller.tscn" id="2_bf1im"]
+[ext_resource type="PackedScene" uid="uid://127iod6ll0jr" path="res://spatial_anchor.tscn" id="2_qjndt"]
 [ext_resource type="Script" uid="uid://drmbewecix3dq" path="res://addons/hand_pose_detector/hand_pose_action.gd" id="3_wa01v"]
 [ext_resource type="Resource" uid="uid://dhbqusuodrl3r" path="res://addons/hand_pose_detector/poses/fist.tres" id="4_2828a"]
 [ext_resource type="Script" uid="uid://d3oyo3h4jgcbv" path="res://addons/hand_pose_detector/hand_pose_action_map.gd" id="5_2828a"]
@@ -11,12 +12,19 @@
 [ext_resource type="PackedScene" uid="uid://b4ysuy43poobf" path="res://addons/godot-xr-tools/functions/function_pickup.tscn" id="8_2828a"]
 [ext_resource type="Script" uid="uid://da8pdlf8gwhco" path="res://function_throw.gd" id="9_1lblj"]
 [ext_resource type="PackedScene" uid="uid://1qu8cv13qgja" path="res://detected scene.tscn" id="11_4fqws"]
+[ext_resource type="Script" uid="uid://d3so44m4qvjpq" path="res://function_anchor.gd" id="11_agvtu"]
 
 [sub_resource type="Resource" id="Resource_1lblj"]
 script = ExtResource("3_wa01v")
 pose = ExtResource("4_2828a")
 action_type = 1
 action_name = "Grip"
+metadata/_custom_type_script = "uid://drmbewecix3dq"
+
+[sub_resource type="Resource" id="Resource_agvtu"]
+script = ExtResource("3_wa01v")
+pose = ExtResource("5_nfo0x")
+action_name = "pointbool"
 metadata/_custom_type_script = "uid://drmbewecix3dq"
 
 [sub_resource type="Resource" id="Resource_4fqws"]
@@ -28,8 +36,15 @@ metadata/_custom_type_script = "uid://drmbewecix3dq"
 
 [sub_resource type="Resource" id="Resource_nfo0x"]
 script = ExtResource("5_2828a")
-actions = Array[ExtResource("3_wa01v")]([SubResource("Resource_1lblj"), SubResource("Resource_4fqws")])
+actions = Array[ExtResource("3_wa01v")]([SubResource("Resource_1lblj"), SubResource("Resource_agvtu"), SubResource("Resource_4fqws")])
 metadata/_custom_type_script = "uid://d3oyo3h4jgcbv"
+
+[sub_resource type="TorusMesh" id="TorusMesh_agvtu"]
+inner_radius = 0.1
+outer_radius = 0.3
+
+[sub_resource type="PrismMesh" id="PrismMesh_s52ug"]
+size = Vector3(0.1, 0.1, 0.1)
 
 [sub_resource type="SphereMesh" id="SphereMesh_1lblj"]
 
@@ -42,8 +57,10 @@ metadata/_custom_type_script = "uid://d3oyo3h4jgcbv"
 [node name="OpenXRFbSceneManager" type="OpenXRFbSceneManager" parent="." unique_id=1307307837]
 default_scene = ExtResource("11_4fqws")
 
+[node name="OpenXRFbSpatialAnchorManager" type="OpenXRFbSpatialAnchorManager" parent="." unique_id=396432010]
+scene = ExtResource("2_qjndt")
+
 [node name="LeftHand" type="XRNode3D" parent="." unique_id=1087878915]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.253, 0.95, 0)
 tracker = &"/user/hand_tracker/left"
 
 [node name="LeftHandHumanoid2" parent="LeftHand" unique_id=1228219219 instance=ExtResource("1_hnqrl")]
@@ -59,8 +76,11 @@ controller_pose_type = 2
 controller_action_map = SubResource("Resource_nfo0x")
 hand_pose_set = ExtResource("7_1lblj")
 
+[node name="MeshInstance3D" type="MeshInstance3D" parent="LeftHand" unique_id=851135670]
+visible = false
+mesh = SubResource("TorusMesh_agvtu")
+
 [node name="RightHand" type="XRNode3D" parent="." unique_id=130591961]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.253, 0.95, 0)
 tracker = &"/user/hand_tracker/right"
 
 [node name="RightHandHumanoid2" parent="RightHand" unique_id=356663796 instance=ExtResource("2_0bi20")]
@@ -84,15 +104,18 @@ hand_pose_set = ExtResource("7_1lblj")
 [node name="LeftVControllerAim" type="XRController3D" parent="." unique_id=719544939]
 tracker = &"/user/hand_pose_controller/left"
 
+[node name="FunctionAnchor" type="Node3D" parent="LeftVControllerAim" unique_id=799477560]
+script = ExtResource("11_agvtu")
+
 [node name="FunctionThrow" type="Node3D" parent="LeftVControllerAim" unique_id=1880254615 node_paths=PackedStringArray("xr_origin")]
 script = ExtResource("9_1lblj")
 projectile_action = "Point"
 xr_origin = NodePath("../..")
 
-[node name="MeshInstance3D" type="MeshInstance3D" parent="LeftVControllerAim" unique_id=506030888]
-transform = Transform3D(0.1, 0, 0, 0, 0.1, 0, 0, 0, 0.1, 0, 0, 0)
+[node name="MeshInstance3D2" type="MeshInstance3D" parent="LeftVControllerAim" unique_id=1371138853]
 visible = false
-mesh = SubResource("SphereMesh_1lblj")
+mesh = SubResource("PrismMesh_s52ug")
+skeleton = NodePath("../../LeftHand/ControllerGrip")
 
 [node name="LeftVControllerGrip" type="XRController3D" parent="." unique_id=2117200340]
 tracker = &"/user/hand_pose_controller/left"
@@ -104,11 +127,6 @@ grab_collision_mask = 327685
 ranged_enable = false
 ranged_distance = 10.0
 ranged_angle = 5.914
-
-[node name="MeshInstance3D" type="MeshInstance3D" parent="LeftVControllerGrip" unique_id=1298790585]
-transform = Transform3D(0.1, 0, 0, 0, 0.1, 0, 0, 0, 0.1, 0, 0, 0)
-visible = false
-mesh = SubResource("BoxMesh_1lblj")
 
 [node name="RightVControllerAim" type="XRController3D" parent="." unique_id=874986773]
 tracker = &"/user/hand_pose_controller/right"

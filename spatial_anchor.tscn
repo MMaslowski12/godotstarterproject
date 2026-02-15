@@ -1,0 +1,19 @@
+[gd_scene format=3 uid="uid://127iod6ll0jr"]
+
+[sub_resource type="CylinderMesh" id="CylinderMesh_vm1dj"]
+top_radius = 0.1
+bottom_radius = 0.1
+height = 0.1
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_vm1dj"]
+albedo_color = Color(0, 1, 1, 1)
+
+[node name="SpatialAnchor" type="Node3D" unique_id=2013978530]
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="." unique_id=1221111551]
+mesh = SubResource("CylinderMesh_vm1dj")
+surface_material_override/0 = SubResource("StandardMaterial3D_vm1dj")
+
+[node name="MeshInstance3D2" type="MeshInstance3D" parent="." unique_id=1933376502]
+mesh = SubResource("CylinderMesh_vm1dj")
+surface_material_override/0 = SubResource("StandardMaterial3D_vm1dj")
